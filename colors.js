@@ -74,5 +74,6 @@ function setColor(){
     doodlesColor.push(['camouflage', [228, 208, 107]]);
     doodlesColor.push(['speedboat', [148, 167, 230]]);
     doodlesColor.push(['sailboat', [148, 167, 230]]);    
+    doodlesColor.push(['pig', [255, 102, 178]]);    
   
 }
