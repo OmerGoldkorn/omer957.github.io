@@ -67,25 +67,29 @@ function checkCollosion0(L){
   let ope;
   let ops;
 
-  for (let i = 0 ; i < obj.strokes.length ; i++){
+  for (let i = 0 ; i < obj.strokes.length; i++){
     let s = obj.strokes[i];
     if(L != s){
       ops = s[0];
       ope = s[s.length-1]
       if (dist(pe.x, pe.y, ops.x, ops.y) < CLOSED_SHAPE_DIST){
-        currL = concat(currL, s)
+        currL = concat(currL, s);
+        // obj.strokes[i] = currL;
         // break;
       }
       else if(dist(ope.x, ope.y, ps.x, ps.y) < CLOSED_SHAPE_DIST){
         currL =  concat(s, currL);
+        // obj.strokes[i] = currL;
         // break;
       }
       else if(dist(ope.x, ope.y, pe.x, pe.y) < CLOSED_SHAPE_DIST){
         currL = concat(currL, reverse(s));
+        // obj.strokes[i] = currL;
         // break;
       } 
       else if(dist(ps.x, ps.y, ops.x, ops.y) < CLOSED_SHAPE_DIST){
         currL = concat(reverse(s), currL);
+        // obj.strokes[i] = currL;
         // break;
       }
     }
@@ -126,6 +130,8 @@ function checkCollosion2(currL){
   let pe = currL[currL.length - 1];
   let flag1 = false
   let flag2 = false;
+
+  let L = [];
 
   for (let i = 0 ; i < (obj.strokes.length-1) ; i++){
     let s = obj.strokes[i];
@@ -361,7 +367,8 @@ class OBJECT{
 
       let s = this.strokes[i];
       if(dist(s[0].x, s[0].y, s[s.length-1].x, s[s.length-1].y) >= CLOSED_SHAPE_DIST){
-        s = checkCollosion0(s);
+        // this.strokes[i] = checkCollosion0(s);
+        s = checkCollosion0(s)
         console.log("here");
       }
       
@@ -389,12 +396,14 @@ class OBJECT{
       }
 
       if (new_s2.length > new_s1.length){
+        // this.strokes[i] = new_s2;
         for (let v of new_s2){      
           // originalL.vertex(v.x, v.y);  
           onlyColor.vertex(v.x, v.y);  
         }
       }
       else{
+        // this.strokes[i] = new_s1;
         for (let v of new_s1){      
           // originalL.vertex(v.x, v.y);  
           onlyColor.vertex(v.x, v.y);  
@@ -478,6 +487,7 @@ function startDrawing(){
   
   
     if (inRect(mouseX, mouseY, 540, 10, 450, 450)){
+    // if (inRect(mouseX, mouseY, 10, 10, 450, 450)){
       // fill(0, 125, 0);
       // noStroke();
       // circle(mouseX, mouseY, 2);
@@ -490,10 +500,17 @@ function startDrawing(){
         stroke(0, 125, 125);
         strokeWeight(slider.value());
         line(mouseX, mouseY, pmouseX, pmouseY);
+
+        // originalL.stroke(0);
+        // originalL.strokeWeight(slider.value());
+        // originalL.line(mouseX-10, mouseY-10, pmouseX-10, pmouseY-10);
+
         seedPoints.push(createVector(mouseX-540, mouseY-10));
+
       }
     }
     else if (inRect(mouseX, mouseY, 10, 10, 450, 450)){
+    // else if(inRect(mouseX, mouseY, 540, 10, 450, 450)){
       // originalL.fill(125, 0, 0);
       // originalL.noStroke();
       // originalL.circle(mouseX, mouseY, 2);
