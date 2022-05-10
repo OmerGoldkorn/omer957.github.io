@@ -48,6 +48,8 @@ function setColor(){
     doodlesColor.push(['mosquito', [71, 71, 15]]);
     doodlesColor.push(['mug', [186, 186, 160]]);
     doodlesColor.push(['hospital', [226, 226, 220]]);
+    doodlesColor.push(['house', [226, 226, 220]]);
+    doodlesColor.push(['church', [226, 226, 220]]);
     doodlesColor.push(['saw', [239, 239, 230]]);
     doodlesColor.push(['castle', [243, 226, 192]]);
     doodlesColor.push(['angel', [247, 247, 140]]);
@@ -60,6 +62,7 @@ function setColor(){
     doodlesColor.push(['asparagus', [138, 205, 127]]);
     doodlesColor.push(['door', [137, 92, 40]]);
     doodlesColor.push(['chair', [130, 95, 35]]);
+    doodlesColor.push(['table', [135, 100, 42]]);
     doodlesColor.push(['blackberry', [65, 9, 15]]);
     doodlesColor.push(['guitar', [188, 161, 121]]);
     doodlesColor.push(['snake', [209, 163, 137]]);
@@ -70,7 +73,7 @@ function setColor(){
     doodlesColor.push(['car', [97, 170, 233]]);
     doodlesColor.push(['crab', [164, 51, 29]]);
     doodlesColor.push(['camel', [185, 166, 105]]);
-    doodlesColor.push(['butterfly', [185, 166, 105]]);
+    doodlesColor.push(['butterfly', [166, 107, 162]]);
     doodlesColor.push(['camouflage', [228, 208, 107]]);
     doodlesColor.push(['speedboat', [148, 167, 230]]);
     doodlesColor.push(['sailboat', [148, 167, 230]]);    

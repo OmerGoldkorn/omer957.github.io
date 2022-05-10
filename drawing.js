@@ -52,7 +52,6 @@ function updateParicles(){
 
 //--------------------------------------------------------------------
 
-
 function checkCollosion0(L){
 
   let currL = [];

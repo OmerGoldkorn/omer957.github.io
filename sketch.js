@@ -16,6 +16,10 @@ let obj;
 
 let slider;
 
+let showLabel = false;
+
+let conent = ' ';
+
 let H = 450;
 
 ///==========================================================
@@ -37,22 +41,36 @@ function gotResults(error, results){
     }
     console.log(results);
 
-    let content = `
-                    ${results[0].label} 
-                    ${nf(100 * results[0].confidence, 2, 1)}%<br/>
-                    ${results[1].label}
-                    ${nf(100 * results[1].confidence, 2, 1)}%<br/>
-                    ${results[2].label} 
-                    ${nf(100 * results[2].confidence, 2, 1)}%<br/>
-                    ${results[3].label}
-                    ${nf(100 * results[3].confidence, 2, 1)}%<br/>
-                    ${results[4].label}   
-                    ${nf(100 * results[4].confidence, 2, 1)}%<br/>-------------------------<br/>`;
+    content = `
+    ${results[0].label} 
+    ${nf(100 * results[0].confidence, 2, 1)}%<br/>
+    ${results[1].label}
+    ${nf(100 * results[1].confidence, 2, 1)}%<br/>
+    ${results[2].label} 
+    ${nf(100 * results[2].confidence, 2, 1)}%<br/>
+    ${results[3].label}
+    ${nf(100 * results[3].confidence, 2, 1)}%<br/>
+    ${results[4].label}   
+    ${nf(100 * results[4].confidence, 2, 1)}%<br/>-------------------------<br/>`;
 
-    resultsDiv.html(content);
+    if (showLabel){
+      resultsDiv.html(content);
+    }
+
     result = results[0].label;
 }
 ///==========================================================
+
+function BshowLabel(){
+  showLabel = !showLabel;
+  if (showLabel){
+    resultsDiv.html(content);
+  }
+  else{
+    resultsDiv.html(' ');
+  }
+}
+
 function BshowPG(){
   pgShow = true;
   obj.showPG();
@@ -165,6 +183,10 @@ function setButtons(){
   button9 = createButton('manage');
   button9.position(10, 575);
   button9.mousePressed(manageButtons);
+
+  button10 = createButton('show labels');
+  button10.position(900, 575);
+  button10.mousePressed(BshowLabel);
 }
 
 function manageButtons(){
@@ -195,6 +217,8 @@ function manageButtons(){
   button8 = createButton('drawPixels');
   button8.position(220, 545);
   button8.mousePressed(drawPixels);
+
+
 }
 
 
@@ -240,6 +264,7 @@ function setup() {
   seedPoints = [];
 
   obj = new OBJECT();
+  showLabel = false;
 }
 
 function draw() {
